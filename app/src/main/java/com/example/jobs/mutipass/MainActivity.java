@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
         initView();
         //先看下有没有以前保存的密码
         String data = openFile();
-        if (!TextUtils.isEmpty(data)) {
+        if (!TextUtils.isEmpty(data) && !data.equals("[]")) {
             lists = gson.fromJson(data, new TypeToken<List<UserData>>() {
             }.getType());
             writeAcount = lists.get(0).getAcount();
@@ -95,12 +95,12 @@ public class MainActivity extends AppCompatActivity {
         window.setOutsideTouchable(true);
         window.setBackgroundDrawable(new ColorDrawable());
 
-       muti.setOnClickListener(new View.OnClickListener() {
-           @Override
-           public void onClick(View v) {
-               window.showAsDropDown(v);
-           }
-       });
+        muti.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                window.showAsDropDown(v);
+            }
+        });
 
         login.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -113,10 +113,10 @@ public class MainActivity extends AppCompatActivity {
                     if (remenber.isChecked()) {
                         //是否选择记住密码
                         stogeUser();
-                        //登陆成功
-                        Intent intent = new Intent(MainActivity.this, Main2Activity.class);
-                        startActivity(intent);
                     }
+                    //登陆成功
+                    Intent intent = new Intent(MainActivity.this, Main2Activity.class);
+                    startActivity(intent);
                 }
             }
         });
