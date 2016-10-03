@@ -1,6 +1,7 @@
 package com.example.jobs.mutipass;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -80,6 +81,7 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case R.id.image_delete:
                         lists.remove(index);
+                        nowStoge();
                         adapter.notifyDataSetChanged();
                         break;
                     default:
@@ -111,6 +113,9 @@ public class MainActivity extends AppCompatActivity {
                     if (remenber.isChecked()) {
                         //是否选择记住密码
                         stogeUser();
+                        //登陆成功
+                        Intent intent = new Intent(MainActivity.this, Main2Activity.class);
+                        startActivity(intent);
                     }
                 }
             }
