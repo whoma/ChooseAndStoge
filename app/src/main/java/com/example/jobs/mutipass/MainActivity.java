@@ -81,7 +81,9 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case R.id.image_delete:
                         lists.remove(index);
+                        //进行实时存储
                         nowStoge();
+                        //通知适配器，数据发生改变了
                         adapter.notifyDataSetChanged();
                         break;
                     default:
